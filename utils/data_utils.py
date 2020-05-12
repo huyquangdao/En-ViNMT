@@ -28,7 +28,7 @@ def pad_to_max_length(token_ids, tokenizer, max_seq_length = 100):
 
     return token_ids
 
-def translate_sentence(sentence, src_field, trg_field, src_tokenizer, des_tokenizer model, device, max_len = 50):
+def translate_sentence(sentence, src_field, trg_field, src_tokenizer, des_tokenizer,  model, device, max_len = 50):
     
     model.eval()
         
