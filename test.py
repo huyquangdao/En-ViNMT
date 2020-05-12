@@ -34,15 +34,7 @@ if __name__ == "__main__":
         Normalize(mean=[0.485, 0.456, 0.406],std=[0.229, 0.224, 0.225]),
     ])
 
-    if args.gpu:
-        device = torch.device('cuda:0')
-    else:
-        device = torch.device('cpu')
-
-    inference = DogCatInference(model=model,device=device,transform=test_transform)
-    result = inference.inference(image)
-
-    print(result)
+    sentence = 'Hello. How are you ?'
 
 
 

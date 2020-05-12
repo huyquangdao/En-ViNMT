@@ -2,6 +2,7 @@ from tqdm import tqdm
 from torch.utils.data import DataLoader
 import torch
 from utils.utils import Loss
+from utils.utils import EarlyStopping
 
 class BaseTrainer:
 
@@ -14,6 +15,7 @@ class BaseTrainer:
         self.log = log
         self.device = device
         self.lr_scheduler = lr_scheduler
+        
 
     def iter(self, batch, is_train = True):
         raise NotImplementedError('You must implement this method')
@@ -37,6 +39,9 @@ class BaseTrainer:
                                   batch_size= train_batch_size,
                                   shuffle= True,
                                   num_workers= num_workers)
+        
+        early_stopping = EarlyStopping(not_improve_step = 3, verbose= True)
+
 
         dev_loader = None
 
@@ -100,11 +105,14 @@ class BaseTrainer:
                         self.log.write('validation_loss',step_loss.item(),global_step)
 
                 dev_loss = dev_epoch_loss.average()
+                
+                early_stopping.step(val = dev_loss)
 
                 if dev_loss <= best_loss:
                     best_loss = dev_loss
                     model_path = 'model_epoch_{0}_best_loss{1:.2f}.pth'.format(i+1,best_loss)
                     self.save_model(model_path)
+                    
 
                 # dev_result = self.metric.average()
                 # for tag, item in dev_result.items():
