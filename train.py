@@ -78,7 +78,7 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
     metric = ClassificationMetric(n_classes=args.n_classes)
 
-    metric = None
+    # metric = None
 
     writer = Writer(log_dir=args.log_dir)
 
