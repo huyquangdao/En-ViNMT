@@ -30,13 +30,13 @@ def parse_args():
     parser.add_argument('--test_des_file', help='Your testing directory', default='data/test/tst2013.vi')
 
 
-    parser.add_argument('--batch_size',help='Your training batch size',default=16, type = int)
+    parser.add_argument('--batch_size',help='Your training batch size',default=8, type = int)
     parser.add_argument('--num_workers', help='number of process', default=2, type = int)
     parser.add_argument('--seed',help='random seed',default=1234, type= int)
     parser.add_argument('--epoch', help='training epochs', default=5, type = int)
     parser.add_argument('--lr',help='learning rate',default=0.001)
     parser.add_argument('--max_lr', help = 'maximum learning rate', default=0.01, type= float)
-    parser.add_argument('--val_batch_size', help='Your validation batch size', default=16)
+    parser.add_argument('--val_batch_size', help='Your validation batch size', default=8)
     parser.add_argument('--grad_clip',help='gradient clipping theshold',default=5, type = int)
     parser.add_argument('--grad_accum_step', help='gradient accumalation step', default=1)
 
