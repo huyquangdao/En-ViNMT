@@ -1,7 +1,7 @@
 from tqdm import tqdm
 from torch.utils.data import DataLoader
 import torch
-from utils.loss_meter import Loss
+from utils.utils import Loss
 
 class BaseTrainer:
 
