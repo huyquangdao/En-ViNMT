@@ -60,7 +60,7 @@ def translate_sentence(sentence, src_field, trg_field, src_tokenizer, des_tokeni
         
         trg_indexes.append(pred_token)
 
-        if pred_token == des_tokenizer.token_to_id('<EOS>')
+        if pred_token == des_tokenizer.token_to_id('<EOS>'):
             break
     
     trg_tokens = des_tokenizer.decode(trg_indexes)
