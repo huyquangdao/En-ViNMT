@@ -14,6 +14,9 @@ class NMTTrainer(BaseTrainer):
         src = batch[0]
         trg = batch[1]
 
+        src = src.to(self.device)
+        trg = trg.to(self.device)
+
         output, _ = self.model(src, trg[:,:-1])
                 
         #output = [batch size, trg len - 1, output dim]
