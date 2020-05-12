@@ -51,7 +51,8 @@ def parse_args():
     parser.add_argument('--hidden_size', help= 'hidden_size', default = 512)
     parser.add_argument('--drop_out', help = 'drop out prop', default = 0.1)
     parser.add_argument('--max_seq_length', help='max sequence length', default = 128)
-
+    
+    parser.add_argument('--vocab_size', help='max sequence length', default = 20000)
 
     args = parser.parse_args()
 
