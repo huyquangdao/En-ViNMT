@@ -17,6 +17,8 @@ from models.transfomers import Encoder, Decoder, Seq2Seq
 from utils.data_utils import create_tokenizer
 from utils.utils import initialize_weights
 
+from trainers.nmt_trainer import NMTTrainer
+
 
 def parse_args():
 
@@ -101,14 +103,14 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr = args.lr)
     lr_scheduler = optim.lr_scheduler.CyclicLR(optimizer = optimizer,base_lr=args.lr,max_lr=args.max_lr,step_size_up=2000,cycle_momentum= False)
 
-    trainer = DogCatTrainer(model= model,
-                            optimizer= optimizer,
-                            criterion= criterion,
-                            metric=metric,
-                            log = writer,
-                            lr_scheduler = lr_scheduler,
-                            device = DEVICE,
-                            )
+    trainer = NMTTrainer(model= model,
+                        optimizer= optimizer,
+                        criterion= criterion,
+                        metric=metric,
+                        log = writer,
+                        lr_scheduler = lr_scheduler,
+                        device = DEVICE,
+                        )
 
     trainer.train(train_dataset=train_dataset,
                   epochs=args.epoch,
