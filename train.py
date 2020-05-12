@@ -44,13 +44,13 @@ def parse_args():
     parser.add_argument('--log_dir',help='Log directory path', default='logs', type= str)
 
     parser.add_argument('--lr_scheduler',help= 'learning rate scheduler', default = 'cyclic')
-    parser.add_argument('--n_layers', help ='number of transfomer layer', default = 6)
-    parser.add_argument('--n_heads', help= 'number of attention head', default = 8)
+    parser.add_argument('--n_layers', help ='number of transfomer layer', default = 6, type = int)
+    parser.add_argument('--n_heads', help= 'number of attention head', default = 8, type= int)
 
-    parser.add_argument('--pf_dim', help ='position feedforward dimesion', default = 2048)
-    parser.add_argument('--hidden_size', help= 'hidden_size', default = 512)
-    parser.add_argument('--drop_out', help = 'drop out prop', default = 0.1)
-    parser.add_argument('--max_seq_length', help='max sequence length', default = 128)
+    parser.add_argument('--pf_dim', help ='position feedforward dimesion', default = 2048, type= int)
+    parser.add_argument('--hidden_size', help= 'hidden_size', default = 512, type= int)
+    parser.add_argument('--drop_out', help = 'drop out prop', default = 0.1, type= float)
+    parser.add_argument('--max_seq_length', help='max sequence length', default = 128, type = int)
     
     parser.add_argument('--vocab_size', help='max sequence length', default = 20000)
 
@@ -76,6 +76,8 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
     # metric = ClassificationMetric(n_classes=args.n_classes)
 
+    metric = None
+
     writer = Writer(log_dir=args.log_dir)
 
     if args.gpu:
@@ -83,7 +85,7 @@ if __name__ == "__main__":
     else:
         DEVICE = torch.device('cpu')
 
-    encoder = Encoder(input_dim=args.vocab_size, hidden_size = args.hidden_size, n_layers= args.n_layers, n_heads = args.n_heads, pf_dim= args.pf_dim, drop_out= args.drop_out, device = DEVICE, max_length= args.max_seq_lengh)
+    encoder = Encoder(input_dim=args.vocab_size, hidden_size = args.hidden_size, n_layers= args.n_layers, n_heads = args.n_heads, pf_dim= args.pf_dim, drop_out= args.drop_out, device = DEVICE, max_length= args.max_seq_length)
     decoder = Decoder(output_dim=args.vocab_size, hidden_size= args.hidden_size, n_layers= args.n_layers , n_heads = args.n_heads, pf_dim = args.pf_dim, drop_out = args.drop_out, device = DEVICE, max_length=args.max_seq_length)
 
     src_pad_idx = src_tokenizer.token_to_id('<PAD>')
