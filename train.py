@@ -54,7 +54,7 @@ def parse_args():
     parser.add_argument('--pf_dim', help ='position feedforward dimesion', default = 2048, type= int)
     parser.add_argument('--hidden_size', help= 'hidden_size', default = 512, type= int)
     parser.add_argument('--drop_out', help = 'drop out prop', default = 0.1, type= float)
-    parser.add_argument('--max_seq_length', help='max sequence length', default = 128, type = int)
+    parser.add_argument('--max_seq_length', help='max sequence length', default = 200, type = int)
     
     parser.add_argument('--vocab_size', help='max sequence length', default = 20000)
 
