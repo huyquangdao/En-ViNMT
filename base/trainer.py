@@ -112,7 +112,7 @@ class BaseTrainer:
 
                 print('epoch - {0}, global_step:{1}, train_loss:{2:.2f}, dev_loss:{3:.2f}'.format(i+1, global_step, train_loss, dev_loss))
 
-                print(train_result, dev_result)
+                # print(train_result, dev_result)
 
             else:
 
@@ -123,4 +123,4 @@ class BaseTrainer:
 
                 print('epoch - {0},global_step:{1}, train_loss:{2:.2f}'.format(i+1, global_step, train_loss))
 
-                print(train_result)
+                # print(train_result)

@@ -30,7 +30,7 @@ def parse_args():
     parser.add_argument('--test_des_file', help='Your testing directory', default='data/test/tst2013.vi')
 
 
-    parser.add_argument('--batch_size',help='Your training batch size',default=8, type = int)
+    parser.add_argument('--batch_size',help='Your training batch size',default=16, type = int)
     parser.add_argument('--num_workers', help='number of process', default=2, type = int)
     parser.add_argument('--seed',help='random seed',default=1234, type= int)
     parser.add_argument('--epoch', help='training epochs', default=5, type = int)
@@ -54,9 +54,9 @@ def parse_args():
     parser.add_argument('--pf_dim', help ='position feedforward dimesion', default = 2048, type= int)
     parser.add_argument('--hidden_size', help= 'hidden_size', default = 512, type= int)
     parser.add_argument('--drop_out', help = 'drop out prop', default = 0.1, type= float)
-    parser.add_argument('--max_seq_length', help='max sequence length', default = 200, type = int)
+    parser.add_argument('--max_seq_length', help='max sequence length', default = 100, type = int)
     
-    parser.add_argument('--vocab_size', help='max sequence length', default = 20000)
+    parser.add_argument('--vocab_size', help='vocab size', default = 20000)
 
     args = parser.parse_args()
 
