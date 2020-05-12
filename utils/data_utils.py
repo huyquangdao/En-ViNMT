@@ -8,7 +8,7 @@ def create_tokenizer(corpus_file_path, vocab_size):
     tokenizer = ByteLevelBPETokenizer()
     tokenizer.train(corpus_file_path,vocab_size)
     tokenizer.add_special_tokens(['<SOS>','<PAD>','<EOS>'])
-    return tokenizer
+    return tokenizer    
 
 
 def pad_to_max_length(token_ids, tokenizer, max_seq_length = 100):
@@ -17,14 +17,20 @@ def pad_to_max_length(token_ids, tokenizer, max_seq_length = 100):
 
     sos_ids = tokenizer.token_to_id('<SOS>')
     eos_ids = tokenizer.token_to_id('<EOS>')
-
-    length_to_pad = max_seq_length - len(token_ids) - 2
+    
+    if len(token_ids) > max_seq_length - 2:
+        while len(token_ids) > max_seq_length - 2:
+            token_ids.pop()
+    
+    token_ids = [sos_ids] + token_ids + [eos_ids]
+    
+    length_to_pad = max_seq_length - len(token_ids)
 
     # to add <SOS> token and <EOS> token
 
     pad = [pad_ids] * length_to_pad
 
-    token_ids = [sos_ids] + token_ids + pad + [eos_ids]
+    token_ids = token_ids + pad
 
     return token_ids
 
