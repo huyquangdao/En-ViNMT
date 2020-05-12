@@ -116,7 +116,7 @@ if __name__ == "__main__":
                   epochs=args.epoch,
                   gradient_accumalation_step=args.grad_accum_step,
                   train_batch_size=args.batch_size,
-                  num_workers=args.num_workers,
+                  num_workers=0,
                   gradient_clipping=args.grad_clip,
                   dev_dataset=test_dataset,
                   dev_batch_size = args.val_batch_size)
