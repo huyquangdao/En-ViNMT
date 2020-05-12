@@ -60,8 +60,8 @@ class BaseTrainer:
                 global_step +=1
                 step_loss, y_true, y_pred = self.iter(batch)
 
-                if y_true is not None and y_pred is not None:
-                    self.metric.write(y_true,y_pred)
+                # if y_true is not None and y_pred is not None:
+                #     self.metric.write(y_true,y_pred)
 
                 step_loss = step_loss / gradient_accumalation_step
                 step_loss.backward()
@@ -79,10 +79,10 @@ class BaseTrainer:
 
             train_loss = train_epoch_loss.average()
 
-            train_result = self.metric.average()
+            # train_result = self.metric.average()
 
-            for tag, item in train_result.items():
-                self.log.write(tag,item,i+1)
+            # for tag, item in train_result.items():
+            #     self.log.write(tag,item,i+1)
 
             if dev_loader is not None:
 
@@ -106,9 +106,9 @@ class BaseTrainer:
                     model_path = 'model_epoch_{0}_best_loss{1:.2f}.pth'.format(i+1,best_loss)
                     self.save_model(model_path)
 
-                dev_result = self.metric.average()
-                for tag, item in dev_result.items():
-                    self.log.write(tag,item,i+1)
+                # dev_result = self.metric.average()
+                # for tag, item in dev_result.items():
+                #     self.log.write(tag,item,i+1)
 
                 print('epoch - {0}, global_step:{1}, train_loss:{2:.2f}, dev_loss:{3:.2f}'.format(i+1, global_step, train_loss, dev_loss))
 
