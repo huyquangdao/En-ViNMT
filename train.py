@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
 
     optimizer = optim.Adam(model.parameters(), lr = args.lr)
-    lr_scheduler = optim.lr_scheduler.CyclicLR(optimizer = optimizer,base_lr=args.lr,max_lr=args.max_lr,step_size_up=2000)
+    lr_scheduler = optim.lr_scheduler.CyclicLR(optimizer = optimizer,base_lr=args.lr,max_lr=args.max_lr,step_size_up=2000,cycle_momentum= True)
 
     trainer = DogCatTrainer(model= model,
                             optimizer= optimizer,
