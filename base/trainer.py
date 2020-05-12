@@ -95,7 +95,7 @@ class BaseTrainer:
 
                     for batch in tqdm(dev_loader):
                         step_loss, y_true, y_pred = self.iter(batch, is_train = False)
-                        self.metric.write(y_true,y_pred)
+                        # self.metric.write(y_true,y_pred)
                         dev_epoch_loss.write(step_loss.item())
                         self.log.write('validation_loss',step_loss.item(),global_step)
 
