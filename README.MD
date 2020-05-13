@@ -1,6 +1,26 @@
-## English Vietnamese Machine Translation Using Transformer
+## English - Vietnamese Machine Translation Using Transformer
 
 ### I. Introduction:
 
-The Transformer in NLP is a novel architecture that aims to solve sequence-to-sequence tasks while handling long-range dependencies with ease. The Transformer was proposed in the paper Attention Is All You Need. It is recommended reading for anyone interested in NLP. Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution.
+Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution.
+
+<img src = "data/image.png">
+
+
+### 2. Training:
+
+This implementation provides one way to retrain transfomer on English- Vietnamese Machine Translation Dataset ( IWSLT2015 English-Vietnamese). If you want to retrain it, please use this command.
+
+```console
+python train.py
+```
+
+These hyper paramters was set by default, if you want to change them, you can use argparse command to change them.
+
+### 3.Dataset:
+
+The Dataset contains 3 folders. Train (133k sentences), Dev( 1200 sentences) and Test( 1200 sentences).
+
+### 4.Some Results:
+
 
