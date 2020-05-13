@@ -4,7 +4,7 @@
 
 Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution.
 
-<img src = "data/image.png">
+<img src = "data/image.png" width = 80%>
 
 
 ### 2. Training:
